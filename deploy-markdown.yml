@@ -1,0 +1,24 @@
+name: Deploy Markdown
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Deploy Markdown Files
+      run: |
+        # Install markdown viewer tool (e.g., grip)
+        pip install grip
+
+        # Serve markdown files
+        grip --export
+
+        # You can add more commands here to deploy the exported HTML files to a web server or hosting service
